@@ -23,6 +23,6 @@ model Post {
   category String
   content String
   created_by String @db.ObjectId
-  created_at DateTime @default(now()) @db.Timestamp()
+  created_at DateTime @default(now())
   created_by_ref User @relation("Post_User", fields: [created_by], references: [id])
 }
