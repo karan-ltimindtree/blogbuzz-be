@@ -15,6 +15,7 @@ model User {
   refresh_token String?
 
   posts_ref Post[] @relation("Post_User")
+  comments_ref Comment[] @relation("Comment_User")
 }
 
 model Post {
@@ -25,4 +26,17 @@ model Post {
   created_by String @db.ObjectId
   created_at DateTime @default(now())
   created_by_ref User @relation("Post_User", fields: [created_by], references: [id])
+
+  comments_ref Comment[] @relation("Comment_Post")
 }
+
+model Comment {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  content String
+  created_by String @db.ObjectId
+  post_id String @db.ObjectId
+  timestamp DateTime @default(now())
+  created_by_ref User @relation("Comment_User", fields: [created_by], references: [id])
+  post_ref Post @relation("Comment_Post", fields: [post_id], references: [id])
+}
+

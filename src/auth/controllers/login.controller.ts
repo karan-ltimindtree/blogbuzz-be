@@ -19,11 +19,11 @@ export async function login(request: Request, response: Response) {
 
     // sign the token
     const accessToken = jwt.sign({ user_id: userFound.id }, process.env.ACCESS_TOKEN_SECRET || 'secret', {
-      expiresIn: '10m', // TODO: change this value later
+      expiresIn: '1m', // TODO: change this value later
     });
 
     const refreshToken = jwt.sign({ user_id: userFound.id }, process.env.REFRESH_TOKEN_SECRET || 'secret', {
-      expiresIn: '1d', // TODO: change this value later
+      expiresIn: '10m', // TODO: change this value later
     });
 
     // TODO: save refresh token in DB
