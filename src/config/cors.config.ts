@@ -1,4 +1,4 @@
-export const allowedOrigins = ['http://localhost:5173'];
+export const allowedOrigins = ['http://localhost:5173', 'https://elegant-syrniki-f2876b.netlify.app/'];
 
 export const corsOptions = {
   origin: (origin: any, callback: (err: Error | null, origin?: string | boolean) => void) => {
